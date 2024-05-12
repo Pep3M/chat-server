@@ -29,8 +29,7 @@ const io = new Server(server, {
   connectionStateRecovery: { 
   },
   cors: {
-    origin,
-    credentials: true
+    origin
   }
 });
 
@@ -83,8 +82,7 @@ io.on('connection', async (socket) => {
   
 app.use(logger('dev'));
 app.use(cors({
-  origin,
-  credentials: true
+  origin
 }));
 app.use(bodyParser.json());
 app.use('/', router);
