@@ -1,4 +1,4 @@
-import { createUser, listUsers } from "./db/helper.js";
+import { createUser, getUser, listUsers } from "./db/helper.js";
 
 // handlers
 const handleError = (res, error) => {
@@ -20,8 +20,12 @@ export const userCreateController = async (req, res) => {
   try {
     console.log(req);
     const { name } = req.body;
-    await createUser(name);
-    res.status(201).send('User created');
+    const { lastInsertRowid } = await createUser(name);
+    const resp = await getUser(lastInsertRowid);
+    if (!resp.rows.length) {
+      throw new Error('User not found');
+    }
+    res.json(resp.rows[0]).status(201);
   } catch (error) {
     handleError(res, error);
   }

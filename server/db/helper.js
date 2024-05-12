@@ -45,4 +45,9 @@ export const createUser = (name) => db.execute({
 
 export const listUsers = () => db.execute(`SELECT * FROM users`)
 
+export const getUser = (id) => db.execute({
+  sql: `SELECT * FROM users WHERE id = :id`,
+  args: { id }
+})
+
 export default {}
