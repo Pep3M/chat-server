@@ -40,7 +40,7 @@ io.on('connection', async (socket) => {
     console.log('user disconnected');
   });
   
-  socket.on('chat message', async (msg) => {
+  socket.on('chat message', async (msg, randomId) => {
     let result;
     const user_id = socket.handshake.auth.user_id;
     const target_user_id = socket.handshake.auth.target_user_id;
@@ -52,6 +52,7 @@ io.on('connection', async (socket) => {
       return;
     }
     io.emit('chat message', {
+      randomId,
       id: result.lastInsertRowid.toString(),
       message: msg,
       date: new Date().toISOString(),
