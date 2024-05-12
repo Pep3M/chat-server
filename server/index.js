@@ -21,7 +21,7 @@ import router from './routes.js';
 
 dotenv.config();
 const port = process.env.PORT || 4000;
-const origin = process.env.FRONTEND_URL || 'http://localhost:5173';
+const origin = '*' || process.env.FRONTEND_URL || 'http://localhost:5173';
 
 const app = express();
 const server = createServer(app);
