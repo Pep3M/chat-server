@@ -21,14 +21,17 @@ import router from './routes.js';
 
 dotenv.config();
 const port = process.env.PORT || 4000;
-const origin = '*' || process.env.FRONTEND_URL || 'http://localhost:5173';
+const origin = process.env.FRONTEND_URL || 'http://localhost:5173';
 
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   connectionStateRecovery: { 
   },
-  cors: cors()
+  cors: {
+    origin,
+    credentials: true
+  }
 });
 
 
@@ -79,7 +82,10 @@ io.on('connection', async (socket) => {
 });
   
 app.use(logger('dev'));
-app.use(cors());
+app.use(cors({
+  origin,
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use('/', router);
 
