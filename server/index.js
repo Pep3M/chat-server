@@ -28,10 +28,7 @@ const server = createServer(app);
 const io = new Server(server, {
   connectionStateRecovery: { 
   },
-  cors: {
-    origin,
-    credentials: true
-  }
+  cors: cors()
 });
 
 
@@ -82,10 +79,7 @@ io.on('connection', async (socket) => {
 });
   
 app.use(logger('dev'));
-app.use(cors({
-  origin,
-  credentials: true
-}));
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/', router);
 
