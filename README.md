@@ -15,10 +15,16 @@ To install the chat client, follow these steps:
 
 ## Usage
 
-To start the chat client in development, run the following command:
-  
-```bash 
+To start the chat server in development, run the following command:
+
+```bash
 npm run dev
+```
+
+To start the chat server in production, run the following command:
+
+```bash
+npm run serve
 ```
 
 ## Contributing

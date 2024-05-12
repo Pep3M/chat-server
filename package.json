@@ -5,7 +5,8 @@
   "main": "/server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node --watch ./server/index.js"
+    "dev": "node --watch ./server/index.js",
+    "serve": "node ./server/index.js"
   },
   "keywords": [],
   "type": "module",
